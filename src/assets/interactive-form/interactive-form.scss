@@ -1,0 +1,148 @@
+.wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    --button-size: 2.5rem;
+    --main-signin-form-color: purple;
+    --scondary-signin-form-color: #FFF;
+}
+
+@mixin transition($arg:all 0.3s linear) {
+    transition: $arg;
+}
+
+@mixin rect ($w:50px, $h:50px) {
+    width: $w;
+    min-width: $w;
+    height: $h;
+    min-height: $h;
+}
+
+@mixin oval($w:50px, $h:50px) {
+    @include rect($w, $h);
+    border-radius: $w;
+}
+
+// @include jump();
+.title {
+    animation: jump 1.5s cubic-bezier(0.165, -0.15, 0.48, 1.68);
+}
+
+.sign-in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include oval(var(--button-size), var(--button-size));
+    border: none;
+    color: var(--scondary-signin-form-color);
+    background-color: var(--signin-form-color);
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+    transition: width 0.3s linear 0.2s, height 0.3s linear, border-radius 0.1s linear 0.5s, transform 0.1s ease-out;
+    &:hover {
+        &+.title {
+            animation: goUp 1s linear;
+            transform: translateY(-100vh);
+        }
+        transition: width 0.3s linear,
+        height 0.3s linear 0.3s,
+        border-radius 0.2s linear;
+        width: calc(var(--button-size) * 6);
+        height: calc(var(--button-size) * 5);
+        border-radius: 0.2rem;
+        cursor: default;
+        .fa {
+            opacity: 0;
+            transform: scale(0);
+            pointer-events: none;
+        }
+        .form__input-gorup {
+            opacity: 1;
+            display: flex;
+        }
+        .form {
+            opacity: 1;
+            transform: scale(1)
+        }
+    }
+    .fa {
+        @include transition();
+        font-size: 1.5em;
+        opacity: 1;
+        margin: auto;
+        transform: scale(1);
+        display: block;
+        position: absolute;
+    }
+}
+
+.form {
+    @include transition(opacity 0.3s linear);
+    transition-delay: 0.3s;
+    @include rect(calc(var(--button-size) * 5), calc(var(--button-size) * 5));
+    opacity: 0;
+    padding: 0.5em;
+    // display: flex;
+    flex-direction: column;
+    transform: scale(0);
+    margin: auto;
+}
+
+.form__input-gorup {
+    position: relative;
+    margin-bottom: 0.5em;
+    color: var(--scondary-signin-form-color);
+    transition-delay: 0.3s;
+    height: 3em;
+    align-items: flex-end;
+    @include transition();
+    >label,
+    >input,
+    >a {
+        &:focus {
+            outline: none
+        }
+        background-color: transparent;
+        color: inherit;
+    }
+    >input {
+        width: 100%;
+        border: none;
+        // font-size: 1em;
+        border-bottom: 2px solid currentColor;
+        &:focus,
+        &:valid {
+            +label {
+                @include transition();
+                transition: transform 0.2s linear;
+                transform: translateY(-1.5rem);
+                font-size: 0.7em;
+            }
+        }
+    }
+    >label {
+        @include transition();
+        position: absolute;
+        font-size: 1em;
+    }
+    >a {
+        margin: auto;
+        text-decoration: none;
+        border: 2px solid currentColor;
+        padding: 0.5em;
+        min-width: 100%;
+        border-radius: 150px;
+        text-align: center;
+        &:hover {
+            cursor: pointer;
+            background-color: var(--scondary-signin-form-color);
+            color: var(--signin-form-color);
+        }
+    }
+}
+
+.form__input-gorup--last {
+    margin-top: 1.5em;
+}

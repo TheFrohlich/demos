@@ -1,0 +1,154 @@
+<style>
+  #mainContent{
+    font-size: calc(0.5em + 1vw);
+    display: flex;
+    flex-wrap: wrap;justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+    background: #1d1f20 ;
+    padding: 1em;
+  }
+  .media {
+  font-family: Roboto, Open-Sans;
+  color: black;
+  background-color: white;
+  font-size: 1rem;
+  border-radius: 2px;
+  border: 1px solid #ddd;
+  padding: 0.34em;
+  margin: 0.64em;
+  max-width: 400px;
+  min-width: 5em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  color: #1d1f20;
+  box-shadow: 1px 1px 3px #eee;
+}
+
+.media--dark {
+  color: #eee;
+  background-color: #1d1f20;
+}
+
+.media--vertical-flip {
+  flex-direction: column-reverse;
+}
+
+.media--rtl {
+  direction: rtl;
+}
+
+.media__header {
+  display: flex;
+  width: 100%;
+  padding: 0.32em;
+}
+
+.media__header--sprad {
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+.media__content {
+  display: flex;
+  flex-direction: column;
+  padding: 0.32em;
+}
+
+.media__image {
+  height: 4em;
+  width: 4em;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+
+.media__user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 0.64em;
+}
+
+.media__user-info--reverse {
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+}
+
+.media__title {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.media__time-stamp {
+  font-size: 0.64em;
+}
+
+.media__text-box {
+  font-size: 1em;
+  padding: 0.64em;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+
+@media (min-width: 600px) {
+  .media {
+    min-width: 500px;
+  }
+}
+</style>
+<div id='mainContent'>
+  <div class="media">
+  <div class="media__header">
+    <div class="media__image"></div>
+    <div class="media__user-info">
+      <h1 class="media__title">John Smith</h1>
+      <div class="media__time-stamp">27/4/2017</div>
+    </div>
+  </div>
+  <div class="media__content">
+    <div class="media__text-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit incidunt, dicta accusantium nihil tempora nesciunt blanditiis, iusto quis eaque eum facere in, praesentium animi possimus vero veniam error. Repudiandae, minus.</div>
+  </div>
+</div>
+<div class="media media--dark">
+  <div class="media__header media__header--sprad">
+    <div class="media__image"></div>
+    <div class="media__user-info ">
+      <h1 class="media__title">John Smith</h1>
+      <div class="media__time-stamp">27/4/2017</div>
+    </div>
+  </div>
+  <div class="media__content">
+    <div class="media__text-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit incidunt, dicta accusantium nihil tempora nesciunt blanditiis, iusto quis eaque eum facere in, praesentium animi possimus vero veniam error. Repudiandae, minus.</div>
+  </div>
+</div>
+<div class="media media--vertical-flip">
+  <div class="media__header media__header--sprad">
+    <div class="media__image"></div>
+    <div class="media__user-info media__user-info--reverse">
+      <h1 class="media__title">John Smith</h1>
+      <div class="media__time-stamp">27/4/2017</div>
+    </div>
+  </div>
+  <div class="media__content">
+    <div class="media__text-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit incidunt, dicta accusantium nihil tempora nesciunt blanditiis, iusto quis eaque eum facere in, praesentium animi possimus vero veniam error. Repudiandae, minus.</div>
+  </div>
+</div>
+<div class="media media--rtl">
+  <div class="media__header">
+    <div class="media__image"></div>
+    <div class="media__user-info">
+      <h1 class="media__title">יונתן כהן</h1>
+      <div class="media__time-stamp">27/4/2017</div>
+    </div>
+  </div>
+  <div class="media__content">
+    <div class="media__text-box">של רפואה מחליטה חפש, כלכלה יוצרים את ויש. גם יוני ננקטת בגרסה רבה. תיבת העברית מדינות שכל גם, מיותר העמוד מדע על, כלים פולנית ומהימנה אל חפש. בקר את כיצד שיתופית תיאטרון, ארץ מדעי עיצוב לאחרונה את. סדר המלצת גרמנית רב־לשוני אם. אם שנתי עיצוב ומדעים
+      כתב, עזרה שיתופית מיתולוגיה אל זכר.</div>
+  </div>
+</div>
+</div>
+

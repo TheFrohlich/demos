@@ -1,0 +1,4 @@
+@mixin border($width:2px,$color:var(--text-main-color)) {
+    border: $width solid $color;
+   
+}

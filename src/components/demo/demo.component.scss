@@ -1,0 +1,69 @@
+@import '../../styles/_mixins';
+textarea{
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+}
+.demo {
+    height: 100vh;
+    width: 100vw;
+    max-height: 100vh;
+    font-size: 1rem;
+    padding: 0.32em;
+    overflow: auto;
+    &__header {
+        width: auto;
+        text-align: left;
+        background: var(--white-1);
+        font-size: 1.5625em;
+        padding: 0.32em;
+        font-weight: bolder;
+        border: 2px solid var(--text-main-color);
+        margin-bottom: 0.32em;
+    }
+    &__content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        max-width: 100vw;
+        overflow: hidden;
+        border: 2px solid var(--text-main-color);
+        background: var(--white-1);
+        height: calc(100% - 3.7em);
+    }
+    &__code-panel,
+    &__view-panel {
+        width: 50%;
+        overflow: hidden;
+        height: 100%;
+        padding: 0.32em;
+    }
+    &__code-panel {
+        display: flex;
+        flex-direction: column;
+        border-right:2px solid var(--text-main-color);
+    }
+}
+
+$codeView :code-view;
+.#{$codeView} {
+    min-height: 10%;
+    max-height: 50%;
+    overflow: auto;
+    &__title {
+        font-size: 1rem;
+        height: 1.5em;
+        padding: 0.25em;
+        position: fixed;
+        width: 49%;
+        background: var(--white-1);
+        +.#{$codeView}__title-placeholder {
+            height: 1.5em;
+            padding: 0.25em;
+        }
+    }
+    &__content {
+        white-space: nowrap;
+        height: auto;
+    }
+}

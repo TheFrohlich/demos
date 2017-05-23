@@ -1,0 +1,62 @@
+@import '../../styles/_vars';
+.demo-list-item {
+    $item-main-color:whitesmoke;
+    $item-hover-color:#fff;
+    display: block;
+    font-size: 1rem;
+    border: 4px solid var(--text-main-color);;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    padding: 0.64em;
+    color: var(--text-main-color);
+    background-color: $item-main-color;
+    text-decoration: none;
+    position: relative;
+    transition: border-radius 0.2s linear;
+    &:hover{
+        // transform: scale(1.05);
+         background-color: $item-hover-color;
+         border-radius: 20px;
+         &:after{
+              border-left: 10px solid $item-hover-color;
+              border-top: 10px solid $item-hover-color;
+         }
+    }
+     &:before {
+        content: ' ';
+        border-left: 13px solid var(--text-main-color);
+        border-right: 13px solid transparent;
+        border-top: 12px solid var(--text-main-color);
+        border-bottom: 12px solid transparent;
+        position: absolute;
+        bottom:-24px;
+        left:12px;
+
+    }
+    &:after {
+        content: ' ';
+        border-left: 10px solid $item-main-color;
+        border-right: 10px solid transparent;
+        border-top: 10px solid $item-main-color;
+        border-bottom: 10px solid transparent;
+        position: absolute;
+        bottom:-18px;
+        left:15px;
+
+    }
+    &__name {
+        margin: 0;
+        font-size: 1.5625em;
+        text-transform: capitalize;
+    }
+    &__description {
+         :hover{
+            transform: none;
+        }
+        font-size: 1em;
+        &:first-letter {
+            text-transform: capitalize;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+.demos-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.64em;
+    &__item-wrapper {
+        margin: 0.32em 0.32em 1.25em 0.32em;
+        width: 45%;
+        cursor: pointer;
+        height: auto;
+    }
+}
+
+@media(min-width:650px) {
+    .demos-list {
+        &__item-wrapper {
+            height: auto;
+            min-width: 10em;
+            width: auto;
+            height: 6em;
+        }
+    }
+}

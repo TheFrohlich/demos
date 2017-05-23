@@ -1,0 +1,15 @@
+$fontFamily:'Roboto',sans-serif;
+:root {
+    --fontFamily: 'Roboto', sans-serif;
+    --border-color: #ddd;
+    --white-1: whitesmoke;
+    --code-gray: #8b8792;
+    --main-bg-color: rgba(36, 133, 181, 0.85);
+    --secondary-bg-color: #19171c;
+    --text-main-color: #19171c;
+}
+
+body {
+    background: var(--main-bg-color);
+    font-family: var(--fontFamily, $fontFamily);
+}
