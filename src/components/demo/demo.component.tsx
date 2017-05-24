@@ -4,14 +4,16 @@ import * as beautify from 'js-beautify';
 import { Route } from 'react-router-dom';
 import { DemosDataService } from './../../services/demo-data.service';
 import { IDemo } from '../demoList/demoList.component';
+import { CodeEditor } from '../code-editor/code-editor.component';
 
 
 export class DemoComponent extends React.Component<{ id: string }, undefined>{
     public htmlTemplate: any;
-    public html: any;
-    public css: any;
-    public script: any;
+    public html: string;
+    public css: string;
+    public script: string;
     public demo: IDemo;
+    public codeEditorHeight:number;
     public extracted = {
         script: [],
         css: [],
@@ -33,9 +35,17 @@ export class DemoComponent extends React.Component<{ id: string }, undefined>{
                 this.css = this.extracted.css && beautify.css(this.extracted.css[1]);
                 this.script = this.extracted.script && beautify.js(this.extracted.script[1]);
                 this.html = this.extracted.html && beautify.html(this.extracted.html[1]);
+                this.codeEditorHeight = this.calcHeight();
             }
         }
 
+    }
+    public calcHeight():number{
+        let numForItems = 0;
+        this.css && (++numForItems); 
+        this.html && (++numForItems); 
+        this.script && (++numForItems);
+        return (100/(numForItems || 1)) 
     }
     componentDidMount() {
         if (this.extracted.script) {
@@ -52,32 +62,38 @@ export class DemoComponent extends React.Component<{ id: string }, undefined>{
             <div className="demo__content">
                 <div className="demo__code-panel ">
                     {(this.html) &&
-                        <div className="code-view">
-                            <div className="code-view__title">HTML</div>
-                            <div className="code-view__title-placeholder"></div>
-                            <div className="code-view__content" >
-                                <pre><code>
-                                    {this.html}
-                                </code></pre></div>
-                        </div>
+                        <CodeEditor
+                            code={this.html}
+                            name='HTML'
+                            language='html'
+                            height={this.codeEditorHeight}
+                            onChange={() => {
+                            }} />
                     }
                     {(this.css) &&
-                        <div className="code-view">
-                            <div className="code-view__title">CSS</div>
-                            <div className="code-view__title-placeholder"></div>
-                            <div className="code-view__content css" ><pre><code contentEditable>{this.css}</code></pre></div>
-                        </div>
+                        <CodeEditor
+                            code={this.css}
+                            name='CSS'
+                            language='css'
+                            height={this.codeEditorHeight}                            
+                            onChange={() => {
+                            }} />
                     }
-                    {this.script && <div className="code-view">
-                        <div className="code-view__title">JS</div>
-                        <div className="code-view__title-placeholder"></div>
-                        <div className="code-view__content" ><pre><code contentEditable>{this.script}</code></pre></div>
-                    </div>}
+                    {this.script &&
+                        <CodeEditor
+                            code={this.script}
+                            name='JS'
+                            language='javascript'
+                            height={this.codeEditorHeight}
+                            
+                            onChange={() => {
+                            }} />}
+
                 </div>
                 <div className="demo__view-panel" dangerouslySetInnerHTML={{ __html: this.htmlTemplate }}></div>
             </div>
 
-            {highlight.initHighlightingOnLoad()}
+            {/*highlight.initHighlightingOnLoad()*/}
         </div>;
     }
 }

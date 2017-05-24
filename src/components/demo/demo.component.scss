@@ -1,16 +1,12 @@
 @import '../../styles/_mixins';
-textarea{
-    width: 100%;
-    height: auto;
-    background-color: transparent;
-}
 .demo {
     height: 100vh;
     width: 100vw;
     max-height: 100vh;
     font-size: 1rem;
     padding: 0.32em;
-    overflow: auto;
+    overflow: visible;
+
     &__header {
         width: auto;
         text-align: left;
@@ -45,25 +41,3 @@ textarea{
     }
 }
 
-$codeView :code-view;
-.#{$codeView} {
-    min-height: 10%;
-    max-height: 50%;
-    overflow: auto;
-    &__title {
-        font-size: 1rem;
-        height: 1.5em;
-        padding: 0.25em;
-        position: fixed;
-        width: 49%;
-        background: var(--white-1);
-        +.#{$codeView}__title-placeholder {
-            height: 1.5em;
-            padding: 0.25em;
-        }
-    }
-    &__content {
-        white-space: nowrap;
-        height: auto;
-    }
-}
