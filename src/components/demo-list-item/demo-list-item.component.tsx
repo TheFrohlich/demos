@@ -1,8 +1,7 @@
 import * as  React from 'React';
-import { IDemo } from '../demoList/demoList.component';
 import { Link } from 'react-router-dom';
 export interface IDemosListItemProps {
-    demo: IDemo;
+    demo: DTO.IDemo;
 }
 export class DemosListItem extends React.Component<IDemosListItemProps, undefined>{
     render() {

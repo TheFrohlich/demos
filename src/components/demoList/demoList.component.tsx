@@ -1,17 +1,10 @@
 import * as  React from 'React';
 import { IDemosListItemProps, DemosListItem } from '../demo-list-item/demo-list-item.component';
 
-export interface IDemo {
-    id: string;
-    name: string;
-    description?: string;
-    summery?: string;
-    route: string;
-    htmlTemplate?: string;
-}
+
 
 export interface IDemosListProps {
-    demoList: Array<IDemo>
+    demoList: Array<DTO.IDemo>
 }
 
 export class DemosList extends React.Component<IDemosListProps, undefined>{

@@ -19,7 +19,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /(\.scss$|\.css$)/,
+                test: /(\.scss$)/,
                 use: ["style-loader", 'css-loader', "sass-loader"],
             },
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
@@ -46,11 +46,6 @@ module.exports = {
         "react": "React",
         "react-dom": "ReactDOM"
     },
-    // devServer: {
-    //     inline: true,
-    //     port: 3000,
-    //     hot: true
-    // },
     plugins: [
         new BrowserSyncPlugin({
             // browse to http://localhost:3000/ during development, 

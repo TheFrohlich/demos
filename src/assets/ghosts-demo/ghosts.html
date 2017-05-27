@@ -98,8 +98,7 @@
     left: var(--ghost-mouse-x);
   }
 </style>
-
-<div class="ghosts-demo__content">
+<div id='mainContent' class="ghosts-demo__content">
   <div class="ghost-box">
     <p>
       <strong> We can set CSS variables form JavaScript and update them live</strong>
@@ -161,8 +160,8 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
+<script>
+  
   var windowWidth = window.innerWidth;
   var windowHeight = window.innerHeight;
 
@@ -191,5 +190,5 @@
   }
   document.onmousemove = function (e) {
     setX(e);
-  };
+  }
 </script>

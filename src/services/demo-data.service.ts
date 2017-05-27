@@ -1,12 +1,14 @@
-
-import { IDemo } from './../components/demoList/demoList.component';
-var demos: Array<IDemo> = [{
+var demos: Array<DTO.IDemo> = [{
     id: 'ghosts',
     name: 'css variables listener',
     description: 'using event listener to update css variable',
     summery: "We can set CSS variables form JavaScript and update them live",
     route: '/demo/ghosts',
-    htmlTemplate: require('../assets/ghosts-demo/ghosts.html')
+    htmlTemplate: require('../assets/ghosts-demo/ghosts.html'),
+    html: require('../assets/ghosts-demo/ghosts.html'),
+    css:  require('css-loader!../assets/ghosts-demo/css/ghosts-style.css').toString() ,
+    javascript: require('raw-loader!../assets/ghosts-demo/js/ghosts.js'),
+
 },
 {
     id: 'px-em-rem',
@@ -25,11 +27,11 @@ var demos: Array<IDemo> = [{
 
 
 export class DemosDataService {
-    public static getDemos(): Array<IDemo> {
+    public static getDemos(): Array<DTO.IDemo> {
         return demos.map((demo) => { return demo; });
     }
-    public static getDemo(predicate: (demo: IDemo) => boolean): IDemo {
-        var result = demos.filter((d: IDemo) => { return predicate(d); });
+    public static getDemo(predicate: (demo: DTO.IDemo) => boolean): DTO.IDemo {
+        var result = demos.filter((d: DTO.IDemo) => { return predicate(d); });
         return result.length ? result[0] : undefined;
     }
 }
