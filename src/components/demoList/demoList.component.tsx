@@ -7,7 +7,12 @@ export interface IDemo {
     description?: string;
     summery?: string;
     route: string;
-    htmlTemplate?: string;
+    html?:string;
+    hideHTML?:boolean;
+    css?:string;
+    hideCSS?:boolean;
+    javascript?:string;
+    hideJS?:boolean;
 }
 
 export interface IDemosListProps {
