@@ -25,14 +25,14 @@ export class DemoComponent extends React.Component<{ id: string }, undefined>{
             return this.props.id === demo.id;
         })
         if (this.demo) {
-            this.htmlTemplate = this.demo.htmlTemplate;
+            this.htmlTemplate = `<style>${this.demo.css}$ </style><script>${this.demo.javascript}</script> ${this.demo.html}`;
             if (this.htmlTemplate) {
-                this.extracted.script = /<script>(.+)<\/script>/gi.exec(this.htmlTemplate);
-                this.extracted.css = /<style>(.+)<\/style>/gi.exec(this.htmlTemplate);
-                this.extracted.html = /<div id=mainContent>(.+)<\/div>/gi.exec(this.htmlTemplate);
-                this.css = this.extracted.css && beautify.css(this.extracted.css[1]);
-                this.script = this.extracted.script && beautify.js(this.extracted.script[1]);
-                this.html = this.extracted.html && beautify.html(this.extracted.html[1]);
+                // this.extracted.script = /<script>(.+)<\/script>/gi.exec(this.htmlTemplate);
+                // this.extracted.css = /<style>(.+)<\/style>/gi.exec(this.htmlTemplate);
+                // this.extracted.html = /<div id=mainContent>(.+)<\/div>/gi.exec(this.htmlTemplate);
+                this.css = this.demo.css && beautify.css(this.demo.css);
+                this.script = this.demo.javascript && beautify.js(this.demo.javascript);
+                this.html = this.demo.html && beautify.html(this.demo.html);
             }
         }
 
@@ -65,13 +65,13 @@ export class DemoComponent extends React.Component<{ id: string }, undefined>{
                         <div className="code-view">
                             <div className="code-view__title">CSS</div>
                             <div className="code-view__title-placeholder"></div>
-                            <div className="code-view__content css" ><pre><code contentEditable>{this.css}</code></pre></div>
+                            <div className="code-view__content css" ><pre><code>{this.css}</code></pre></div>
                         </div>
                     }
                     {this.script && <div className="code-view">
                         <div className="code-view__title">JS</div>
                         <div className="code-view__title-placeholder"></div>
-                        <div className="code-view__content" ><pre><code contentEditable>{this.script}</code></pre></div>
+                        <div className="code-view__content" ><pre><code>{this.script}</code></pre></div>
                     </div>}
                 </div>
                 <div className="demo__view-panel" dangerouslySetInnerHTML={{ __html: this.htmlTemplate }}></div>
