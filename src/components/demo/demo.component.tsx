@@ -88,8 +88,6 @@ export class DemoComponent extends React.Component<{ id: string }, undefined>{
                 </div>
                 <div className="demo__view-panel" dangerouslySetInnerHTML={{ __html: this.htmlTemplate}}></div>
             </div>
-
-            {/*highlight.initHighlightingOnLoad()*/}
-        </div>;
+        </div>
     }
 }
