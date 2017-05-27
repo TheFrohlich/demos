@@ -1,4 +1,4 @@
-(function () {
+
   var windowWidth = window.innerWidth;
   var windowHeight = window.innerHeight;
 
@@ -28,4 +28,3 @@
   document.onmousemove = function (e) {
     setX(e);
   }
-})();
