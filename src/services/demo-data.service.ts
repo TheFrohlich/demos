@@ -7,8 +7,9 @@ var demos: Array<IDemo> = [{
     summery: "We can set CSS variables form JavaScript and update them live",
     route: '/demo/ghosts',
     html: require('../assets/ghosts-demo/ghosts.html'),
+    hideHTML:true,
     css: require('css-loader!../assets/ghosts-demo/css/ghosts-style.css').toString(),
-    javascript: require('../assets/ghosts-demo/js/ghosts.js')
+    javascript: require('raw-loader!../assets/ghosts-demo/js/ghosts.js'),
 },
 {
     id: 'px-em-rem',
@@ -25,7 +26,6 @@ var demos: Array<IDemo> = [{
     route: '/demo/interactive-form',
     html: require('../assets/interactive-form/interactive-form.html'),
     css: require('css-loader!../assets/interactive-form/interactive-form.css').toString(),
-    // javascript: require('raw-loader!../assets/interactive-form/interactive-form.js'),
     hideJS: true,
 }]
 

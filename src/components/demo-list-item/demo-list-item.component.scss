@@ -1,6 +1,6 @@
-@import '../../styles/_vars';
+
 .demo-list-item {
-    $item-main-color:whitesmoke;
+    $item-main-color:var(--white-1,whitsmoke);
     $item-hover-color:#fff;
     display: block;
     font-size: 1rem;

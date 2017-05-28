@@ -4,6 +4,8 @@ import * as beautify from 'js-beautify';
 import { Route } from 'react-router-dom';
 import { DemosDataService } from './../../services/demo-data.service';
 import { IDemo } from '../demoList/demoList.component';
+import { CodeEditor } from '../code-editor/code-editor.component';
+
 
 
 export class DemoComponent extends React.Component<{ id: string }, undefined>{
@@ -17,6 +19,7 @@ export class DemoComponent extends React.Component<{ id: string }, undefined>{
         css: [],
         html: [],
     }
+    public editorHeight:string;
     constructor(props) {
         super(props);
         if (!this.props) return;
@@ -35,49 +38,66 @@ export class DemoComponent extends React.Component<{ id: string }, undefined>{
                 this.html = this.demo.html && beautify.html(this.demo.html);
             }
         }
+        this.editorHeight = this.calcEditorHeight() + 'vh';
 
     }
+    public calcEditorHeight():number{
+        let editorsCounter = 0;
+        this.css && !this.demo.hideCSS && editorsCounter++;
+        this.html &&  !this.demo.hideHTML && editorsCounter++;
+        this.script && !this.demo.hideJS &&  editorsCounter++;
+        return (80/(editorsCounter || 1));
+    }
     componentDidMount() {
-        if (this.extracted.script) {
-            (window as any).eval(this.extracted.script[1]);
+        if (this.script) {
+            (window as any).eval(this.script);
         }
 
     }
-    public onChange(): void {
-        alert('ninja')
+    public onChange(newValue: string, mode: string): void {
+        console.log(newValue);
     }
     render() {
         return <div className="demo">
             <div className="demo__header capitalize">{this.demo.name}</div>
             <div className="demo__content">
                 <div className="demo__code-panel ">
-                    {(this.html) &&
-                        <div className="code-view">
-                            <div className="code-view__title">HTML</div>
-                            <div className="code-view__title-placeholder"></div>
-                            <div className="code-view__content" >
-                                <pre><code>
-                                    {this.html}
-                                </code></pre></div>
-                        </div>
+                    {(this.html && !this.demo.hideHTML) &&
+                        <CodeEditor
+                            title='HTML'
+                            code={this.html}
+                            language="html"
+                            onChange={(newValue) => {
+                                this.onChange(newValue, 'html')
+                            }}
+                            hight={this.editorHeight}
+                        />
                     }
-                    {(this.css) &&
-                        <div className="code-view">
-                            <div className="code-view__title">CSS</div>
-                            <div className="code-view__title-placeholder"></div>
-                            <div className="code-view__content css" ><pre><code>{this.css}</code></pre></div>
-                        </div>
+                    {(this.css && !this.demo.hideCSS) &&
+                        <CodeEditor
+                            title='CSS'
+                            code={this.css}
+                            language="css"
+                            onChange={(newValue) => {
+                                this.onChange(newValue, 'css')
+                            }}
+                            hight={this.editorHeight}
+                        />
                     }
-                    {this.script && <div className="code-view">
-                        <div className="code-view__title">JS</div>
-                        <div className="code-view__title-placeholder"></div>
-                        <div className="code-view__content" ><pre><code>{this.script}</code></pre></div>
-                    </div>}
+                    {(this.script && !this.demo.hideJS) &&
+                        <CodeEditor
+                            title='JS'
+                            code={this.script}
+                            language="javascript"
+                            onChange={(newValue) => {
+                                this.onChange(newValue, 'javascript')
+                            }}
+                            hight={this.editorHeight}
+                        />
+                    }
                 </div>
                 <div className="demo__view-panel" dangerouslySetInnerHTML={{ __html: this.htmlTemplate }}></div>
             </div>
-
-            {highlight.initHighlightingOnLoad()}
         </div>;
     }
 }
